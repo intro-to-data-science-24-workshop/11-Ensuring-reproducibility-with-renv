@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ensuring Reproducibility with renv</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #e80078;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li a:hover {
+            color: #e80078;
+        }
+
+        .sidebar .ack {
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #e80078;
+            font-size: 32px;
+        }
+
+        h2 {
+            color: #210070;
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #e80078;
+        }
+
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Ensuring Reproducibility</h2>
+        <ul>
+            <li><a href="#intro">Introduction to Reproducibility</a></li>
+            <li><a href="#renv">What is renv?</a></li>
+            <li><a href="#setup">Setting up renv</a></li>
+            <li><a href="#lockfile">Using the renv.lock File</a></li>
+            <li><a href="#management">Managing Packages and Versions</a></li>
+            <li><a href="#git">Using renv with Git</a></li>
+            <li><a href="#issues">Common Issues</a></li>
+        </ul>
+        <div class="ack">Group Members: Matheus Galiza, Mika Moser, Sattiki Ghanguly</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Title of the Workshop -->
+        <h1>Ensuring Reproducibility with renv</h1>
+
+        <!-- Section 1: Introduction to Reproducibility -->
+        <h2 id="intro">1. Introduction to Reproducibility</h2>
+        <p>
+             So, what is reproducibility? Imagine trying to recreate the amazing food you had at MENSA, so you go to their website
+            but it doesn’t tell you exactly which spices or how much of each to use. It’s a nightmare, right? 
+            Well, the same thing happens in data science when you can't reproduce results because of different environments, 
+            package versions, or missing dependencies.
+</p>
+        <p>
+            Here are some common issues we face:
+        </p>
+        <ul>
+            <li><span class="highlight">Outdated or conflicting packages:</span> Different versions can lead to unpredictable results.</li>
+            <li><span class="highlight">System discrepancies:</span> Different operating systems or setups can give you different outcomes.</li>
+        </ul>
+        <p>
+
+        <p>
+            In this workshop, we’ll explore how the <strong>renv</strong> package helps tackle these issues by creating isolated and reproducible environments for R projects.
+        </p>
+
+        <!-- Section 2: What is renv? -->
+        <h2 id="renv">2. What is renv?</h2>
+        <p>
+            <strong>renv</strong> is a powerful tool that manages project-specific R libraries, ensuring that the packages used in one project do not affect others. When you initialize a project with renv, it creates a dedicated library and records the exact versions of the packages you're using. This is essential for maintaining consistent and reproducible environments across different machines.
+
+         We can think of <strong>renv</strong> as a time capsule for our project's environment, It helps us freeze all the packages 
+            and their versions, so no matter when or where our project gets run, it’ll work just the way we intended
+        </p>
+        <p>
+            But why go through all this trouble? Well, using renv gives us a reproducible, isolated environment for every project. 
+            That way, our project dependencies are not affected by system-wide packages, and collaboration becomes smoother.
+
+        <p>Let’s kick things off with the core command:</p>
+        <pre>renv::init()</pre>
+        <p>
+            This command sets up a project library, adds a lockfile to track package versions, and updates your .Rprofile to ensure that renv settings are applied every time you start an R session.
+        </p>
+
+        <!-- Section 3: Setting up renv -->
+        <h2 id="setup">3. Setting up renv in a Project</h2>
+        <p>
+            Setting up renv is simple. You can either initialize renv in an existing project or create a new one. Here's how:
+        </p>
+        <pre>
+# Step 1: Initialize renv in your project
+renv::init()
+
+# Step 2: Install packages within the renv environment
+renv::install("dplyr")
+
+# Step 3: Snapshot the environment to capture package versions
+renv::snapshot()
+
+# Step 4: Restore the environment on a new machine
+renv::restore()
+        </pre>
+
+        <!-- Section 4: Using the renv.lock File -->
+        <h2 id="lockfile">4. Using the renv.lock File</h2>
+        <p>
+            The <code>renv.lock</code> file is where the magic happens. This file stores the precise versions of every package 
+            in your project. When you share your project with someone else, all they have to do is run:
+        </p>
+        <pre><code>renv::restore()</code></pre>
+        <p>
+            This will install the same package versions and recreate your environment perfectly. Boom, reproducibility achieved!
+
+        </pre>
+
+<!-- Section 5: Managing Packages and Versions -->
+        <h2 id="management">5. Managing Packages and Versions</h2>
+        <p>
+            Managing packages is straightforward with renv. You can install, update, or even remove packages, all within your isolated environment.
+        </p>
+        <ul>
+            <li><strong>Install:</strong> <code>renv::install("package_name")</code></li>
+            <li><strong>Update:</strong> <code>renv::update("package_name")</code></li>
+            <li><strong>Remove:</strong> <code>renv::remove("package_name")</code></li>
+        </ul>
+        <p>
+            Changed your mind and want to roll back to a previous version of a package? No problem! Use the lockfile to go back in time.
+        </p>
+
+
+        <!-- Section 6: Using renv with Git -->
+        <h2 id="git">6. Using renv with Git</h2>
+        <p>
+           When using renv with Git, you should commit your <code>renv.lock</code> file but exclude the actual library 
+            (stored in <code>renv/library</code>) from version control by adding it to your <code>.gitignore</code> file.
+        </p>
+        <p>
+            This way, anyone cloning your repository can simply run <code>renv::restore()</code> to recreate the environment. 
+            Here’s a quick demo:
+        </p>
+        <pre><code>
+# Clone the repo
+git clone your-repo-url
+# Enter the project
+cd your-repo
+# Restore the environment
+renv::restore()
+        </code></pre>
+
+
+        <!-- Section 7: Common Issues -->
+        <h2 id="issues">7. Common Issues and Solutions</h2>
+        <p>
+            Sometimes, you may encounter issues like package conflicts or differences in system environments. Here are some tips to resolve these problems:
+        </p>
+        <ul>
+            <li><span class="highlight">Conflicting package versions:</span> Use <code>renv::restore()</code> to revert to the correct versions of your packages.</li>
+            <li><span class="highlight">System differences:</span> Be sure to document any system-specific dependencies (e.g., compilers) and consider using Docker for fully isolated environments.</li>
+        </ul>
+
+        <!-- Conclusion -->
+        <h2>Conclusion and Further Resources</h2>
+        <p>
+            With renv, you can ensure that your projects are portable, collaborative, and fully reproducible. Remember to snapshot regularly, keep your renv.lock file up to date, and restore environments when needed.
+        </p>
+        <p>For more resources, check out:</p>
+        <ul>
+            <li><a href="https://rstudio.github.io/renv/">renv Documentation</a></li>
+            <li><a href="https://cran.r-project.org/web/packages/renv/vignettes/renv.html">RStudio Blog on renv</a></li>
+            <li><a href="https://github.com/r-lib/rig">Managing R Versions with rig</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
