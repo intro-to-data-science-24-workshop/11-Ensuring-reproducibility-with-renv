@@ -1,0 +1,145 @@
+---
+title: "Ensuring Reproducibility with renv"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    highlight: tango
+    css: custom.css
+keep_md: true
+---
+
+```{css, echo=FALSE}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #e80078;
+    font-size: 32px;
+}
+
+h2 {
+    color: #210070;
+    font-size: 24px;
+    margin-top: 40px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #e80078;
+}
+
+pre {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+```
+
+## 1. Introduction to Reproducibility
+
+So, what is reproducibility? Imagine trying to recreate the amazing food you had at MENSA, so you go to their website but it doesn't tell you exactly which spices or how much of each to use. It's a nightmare, right? Well, the same thing happens in data science when you can't reproduce results because of different environments, package versions, or missing dependencies.
+
+Here are some common issues we face:
+
+- <span class="highlight">Outdated or conflicting packages:</span> Different versions can lead to unpredictable results.
+- <span class="highlight">System discrepancies:</span> Different operating systems or setups can give you different outcomes.
+
+In this workshop, we'll explore how the **renv** package helps tackle these issues by creating isolated and reproducible environments for R projects.
+
+## 2. What is renv?
+
+**renv** is a powerful tool that manages project-specific R libraries, ensuring that the packages used in one project do not affect others. When you initialize a project with renv, it creates a dedicated library and records the exact versions of the packages you're using. This is essential for maintaining consistent and reproducible environments across different machines.
+
+We can think of **renv** as a time capsule for our project's environment. It helps us freeze all the packages and their versions, so no matter when or where our project gets run, it'll work just the way we intended.
+
+But why go through all this trouble? Well, using renv gives us a reproducible, isolated environment for every project. That way, our project dependencies are not affected by system-wide packages, and collaboration becomes smoother.
+
+Let's kick things off with the core command:
+  
+  ```r
+renv::init()
+```
+
+This command sets up a project library, adds a lockfile to track package versions, and updates your .Rprofile to ensure that renv settings are applied every time you start an R session.
+
+## 3. Setting up renv in a Project
+
+Setting up renv is simple. You can either initialize renv in an existing project or create a new one. Here's how:
+
+```r
+# Step 1: Initialize renv in your project
+renv::init()
+
+# Step 2: Install packages within the renv environment
+renv::install("dplyr")
+
+# Step 3: Snapshot the environment to capture package versions
+renv::snapshot()
+
+# Step 4: Restore the environment on a new machine
+renv::restore()
+```
+
+## 4. Using the renv.lock File
+
+The `renv.lock` file is where the magic happens. This file stores the precise versions of every package in your project. When you share your project with someone else, all they have to do is run:
+
+```r
+renv::restore()
+```
+
+This will install the same package versions and recreate your environment perfectly. Boom, reproducibility achieved!
+
+## 5. Managing Packages and Versions
+
+Managing packages is straightforward with renv. You can install, update, or even remove packages, all within your isolated environment.
+
+- **Install:** `renv::install("package_name")`
+- **Update:** `renv::update("package_name")`
+- **Remove:** `renv::remove("package_name")`
+
+Changed your mind and want to roll back to a previous version of a package? No problem! Use the lockfile to go back in time.
+
+## 6. Using renv with Git
+
+When using renv with Git, you should commit your `renv.lock` file but exclude the actual library (stored in `renv/library`) from version control by adding it to your `.gitignore` file.
+
+This way, anyone cloning your repository can simply run `renv::restore()` to recreate the environment. Here's a quick demo:
+  
+  ```r
+# Clone the repo
+git clone your-repo-url
+# Enter the project
+cd your-repo
+# Restore the environment
+renv::restore()
+```
+
+## 7. Common Issues and Solutions
+
+Sometimes, you may encounter issues like package conflicts or differences in system environments. Here are some tips to resolve these problems:
+  
+  - <span class="highlight">Conflicting package versions:</span> Use `renv::restore()` to revert to the correct versions of your packages.
+- <span class="highlight">System differences:</span> Be sure to document any system-specific dependencies (e.g., compilers) and consider using Docker for fully isolated environments.
+
+## Conclusion and Further Resources
+
+With renv, you can ensure that your projects are portable, collaborative, and fully reproducible. Remember to snapshot regularly, keep your renv.lock file up to date, and restore environments when needed.
+
+For more resources, check out:
+  
+  - [renv Documentation](https://rstudio.github.io/renv/)
+- [RStudio Blog on renv](https://cran.r-project.org/web/packages/renv/vignettes/renv.html)
+- [Managing R Versions with rig](https://github.com/r-lib/rig)
+
+*Group Members: Matheus Galiza, Mika Moser, Sattiki Ghanguly*
