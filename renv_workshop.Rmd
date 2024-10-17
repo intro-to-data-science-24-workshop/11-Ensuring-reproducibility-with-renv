@@ -142,4 +142,4 @@ For more resources, check out:
 - [RStudio Blog on renv](https://cran.r-project.org/web/packages/renv/vignettes/renv.html)
 - [Managing R Versions with rig](https://github.com/r-lib/rig)
 
-*Group Members: Matheus Galiza, Mika Moser, Sattiki Ghanguly*
+*Group Members: Matheus Galiza, Mika Moeser, Sattiki Ganguly*
