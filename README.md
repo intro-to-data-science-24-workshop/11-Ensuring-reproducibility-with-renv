@@ -22,7 +22,8 @@ Equip participants with the skills to troubleshoot common reproducibility issues
 
 ## Tutorial
 
-The session is accompanied by a tutorial, which can be accessed using this link.
+The session is accompanied by a tutorial, which can be accessed using this [link](https://hertieschool-my.sharepoint.com/personal/235281_students_hertie-school_org/_layouts/15/stream.aspx?id=%2Fpersonal%2F235281%5Fstudents%5Fhertie%2Dschool%5Forg%2FDocuments%2FAufnahmen%2FDS%20Presentation%2D20241025%5F213848%2DBesprechungsaufzeichnung%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E688c7ac0%2D46c6%2D41cd%2D8e17%2D7351acdea3c3).
+
 
 
 ## Instructors
