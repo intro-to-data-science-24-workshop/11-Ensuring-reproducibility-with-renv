@@ -1,4 +1,4 @@
-# Ensuring-reproducibility-with-renv
+&# Ensuring-reproducibility-with-renv
 
 
 ## Summary
@@ -29,7 +29,9 @@ The session is accompanied by a tutorial, which can ).
 
 ## Further resources
 
-- )
+- https://rstudio.github.io/renv/
+- https://cran.r-project.org/web/packages/renv/vignettes/renv.html
+- https://github.com/r-lib/rig
 
 
 ## License
