@@ -50,5 +50,5 @@ The material in this repository is made available under the [MIT license](http:/
 
 **Sattiki Ganguly** prepared the presentation slides and recording.
 
-**Mika Moeser** processed and presented the video.
+**Mika Moeser** edited the presentation slides, processed and presented the video.
 
