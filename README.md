@@ -11,12 +11,16 @@ This repository provides materials for a session that is part of the [I2DS Tools
 
 ### Main learning objectives
 
-The goals of this session are to (1) equip you (2).
+The goals of this session are to:
+
+Develop a comprehensive understanding of reproducibility challenges in data science and how renv addresses them.
+Provide practical knowledge on initializing renv, managing package versions, and sharing environments.
+Equip participants with the skills to troubleshoot common reproducibility issues, fostering smooth collaboration across different environments.
 
 
 ## Tutorial
 
-The session is accompanied by a tutorial, which can ).
+The session is accompanied by a tutorial, which can be accessed using this link.
 
 
 ## Instructors
