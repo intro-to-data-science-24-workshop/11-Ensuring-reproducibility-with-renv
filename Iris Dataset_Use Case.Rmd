@@ -1,0 +1,91 @@
+---
+title: "Ren V _Final_Iris Project"
+author: "Sattiki"
+date: "2024-10-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Load renv and initialize it: Here, we are setting up the environment
+```{r}
+install.packages("renv")  
+library(renv)
+renv::init() #The renv::init() function, creates a lock in the project directory so only the relevant packages to the directory will be accessed.
+```
+
+
+
+# Install the packages needed for the project
+```{r}
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("summarytools")
+
+```
+# Snapshot to save the environment in renv.lock
+```{r}
+renv::snapshot() #The renv::snapshot() function will capture the package versions and store them in the renv.lock file, ensuring that the exact versions can be reproduced.
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(summarytools)
+```
+
+
+
+# Load the iris dataset
+```{r}
+data("iris")
+```
+
+# Show basic information and structure
+
+```{r}
+summary(iris)
+dfSummary(iris)  # Provides a detailed summary using summarytools
+
+```
+
+# Calculate the average sepal and petal lengths by species
+```{r}
+iris_summary <- iris %>%
+  group_by(Species) %>%
+  summarise(
+    Avg_Sepal_Length = mean(Sepal.Length),
+    Avg_Sepal_Width = mean(Sepal.Width),
+    Avg_Petal_Length = mean(Petal.Length),
+    Avg_Petal_Width = mean(Petal.Width)
+  )
+
+print(iris_summary)
+```
+
+
+
+5. Data Visualization
+
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  geom_point() +
+  labs(title = "Sepal Length vs Petal Length",
+       x = "Sepal Length (cm)",
+       y = "Petal Length (cm)") +
+  theme_minimal()
+```
+
+#Restoring the Environment (For Collaboration): If we share this project with someone else, they can recreate the exact environment by running:
+
+
+# Restore the project environment based on renv.lock
+
+
+```{r}
+renv::restore() #This command installs all necessary packages in the specific versions used for the project, allowing others to reproduce your results exactly.
+```
+
