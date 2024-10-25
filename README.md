@@ -7,7 +7,9 @@ This repository provides materials for a session that is part of the [I2DS Tools
 
 ### Session contents
 
+In this session, we’ll focus on the importance of reproducibility in data science and how the renv package in R can help achieve it. Reproducibility allows others to replicate your findings transparently.
 
+We'll explore how renv manages project environments by isolating dependencies and ensuring consistent package versions. You’ll learn to set up and manage R projects with renv, integrate version control with Git, troubleshoot common issues, and maintain a reproducible workflow.
 
 ### Main learning objectives
 
