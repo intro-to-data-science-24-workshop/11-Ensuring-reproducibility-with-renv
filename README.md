@@ -22,7 +22,7 @@ Equip participants with the skills to troubleshoot common reproducibility issues
 
 ## Tutorial
 
-The session is accompanied by a tutorial, which can be accessed using this link.
+The session is accompanied by a tutorial, which can be accessed using this [link](https://hertieschool-my.sharepoint.com/:v:/g/personal/248936_students_hertie-school_org/EZlVsKNO04lOngH9tQSGqM4Bw7-gqIKpyTRbwhczyJh3ig?e=BsOdK0&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D).
 
 
 ## Instructors
@@ -50,5 +50,5 @@ The material in this repository is made available under the [MIT license](http:/
 
 **Sattiki Ganguly** prepared the presentation slides and recording.
 
-**Mika Moeser** processed and presented the video.
+**Mika Moeser** edited the slides, processed and presented the video.
 
